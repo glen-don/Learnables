@@ -195,10 +195,13 @@
 
         @media (min-width: 601px) {
             body {
-                height: 100vh; /* Set height to fill the viewport */
-                display: flex; /* Use flexbox for centering */
-                justify-content: center; /* Center items horizontally */
-                align-items: center; /* Center items vertically */
+                height: auto; /* Allow body to grow with content */
+                min-height: 100vh;
+                padding: 2rem;
+                overflow-y: auto; /* Enable scrolling */
+                display: flex; /* Keep the flex display */
+                flex-direction: column;
+                justify-content: center; /* Center vertically */
             }
 
             h1 {
@@ -208,9 +211,10 @@
             .desktop-container {
                 /* Add this to center the container */
                 display: flex;
-                justify-content: center; /* Center content horizontally */
-                align-items: center; /* Center content vertically */
-                height: 100%; /* Ensure it takes full height */
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin: auto 0; /* This helps with centering when there's extra space */
             }
 
             .brand-icons {
@@ -296,12 +300,12 @@
             }
 
             body {
-                padding: 1rem; /* Remove padding */
-                height: 100vh; /* Set height to fill the viewport */
-                display: flex; /* Use flexbox for centering */
-                flex-direction: column; /* Stack items vertically */
-                justify-content: center; /* Center items vertically */
-                align-items: center; /* Center items horizontally */
+                height: auto;
+                min-height: 100vh;
+                display: flex;
+                padding: 1rem;
+                overflow-y: auto;
+                justify-content: center;
         
             }
 
