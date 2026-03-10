@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Learnables</title>
+    <meta name="description" content="Language learning tips, stories, and insights from Learnables. Learn Portuguese, Spanish, and more through bilingual stories.">
+    <link rel="icon" href="../app_icon.png" type="image/png">
+    <link rel="canonical" href="https://learnables.co/blog/">
+
+    <!-- Apple Smart App Banner -->
+    <meta name="apple-itunes-app" content="app-id=6756303366">
+
+    <meta property="og:title" content="Blog — Learnables">
+    <meta property="og:description" content="Language learning tips, stories, and insights from Learnables.">
+    <meta property="og:url" content="https://learnables.co/blog/">
+    <meta property="og:type" content="website">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Learnables Blog",
+        "description": "Language learning tips, stories, and insights from Learnables.",
+        "url": "https://learnables.co/blog/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Learnables",
+            "url": "https://learnables.co"
+        }
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #2C3E50;
+            --gold: #EDB347;
+            --cream: #FDFBF7;
+            --warm-yellow: #FFF59D;
+            --text: #2C3E50;
+            --text-light: #5D6D7E;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--text);
+            background-color: var(--cream);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.25rem 1.5rem;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--navy);
+        }
+        .nav-logo img { height: 36px; width: 36px; border-radius: 8px; }
+        .nav-logo span { font-family: 'Lora', serif; font-weight: 700; font-size: 1.25rem; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--navy); }
+
+        /* BLOG HEADER */
+        .blog-header {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 2rem;
+            text-align: center;
+        }
+        .blog-header h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .blog-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* ARTICLE GRID */
+        .blog-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.75rem;
+            text-decoration: none;
+            color: inherit;
+            transition: box-shadow 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
+        }
+        .blog-card:hover {
+            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.12);
+            transform: translateY(-2px);
+        }
+        .blog-card .card-tag {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 100px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .blog-card h2 {
+            font-family: 'Lora', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+        .blog-card .card-excerpt {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        .blog-card .card-meta {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            opacity: 0.7;
+        }
+
+        /* SECTION HEADINGS */
+        .blog-section-title {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 0.5rem;
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        .blog-section-title:first-of-type {
+            padding-top: 0;
+        }
+
+        /* FOOTER */
+        footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(44, 62, 80, 0.1);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-left {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .footer-links a {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--navy); }
+
+        @media (max-width: 768px) {
+            .blog-header h1 { font-size: 2rem; }
+            .blog-card h2 { font-size: 1.15rem; }
+            .nav-links { gap: 0.75rem; }
+            .nav-links a { font-size: 0.8rem; }
+            footer { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <a href="/" class="nav-logo">
+        <img src="../app_icon.png" alt="Learnables">
+        <span>Learnables</span>
+    </a>
+    <div class="nav-links">
+        <a href="/blog/">Blog</a>
+    </div>
+</nav>
+
+<!-- HEADER -->
+<section class="blog-header">
+    <h1>Blog</h1>
+    <p>Tips, insights, and stories about learning languages the natural way.</p>
+</section>
+
+<!--
+TO ADD A NEW ARTICLE:
+1. Create a new folder: blog/your-article-slug/index.html
+   (use the template in blog/_template/index.html)
+2. Add a card below in the appropriate section.
+-->
+
+<!-- FEATURED: App Reviews & Comparisons -->
+<h2 class="blog-section-title">App Reviews and Comparisons</h2>
+<section class="blog-grid">
+    <a href="best-european-portuguese-apps/" class="blog-card">
+        <span class="card-tag">App Reviews</span>
+        <h2>Best Apps for Learning European Portuguese in 2026</h2>
+        <p class="card-excerpt">We tested every major app for European Portuguese. Most only teach Brazilian. Here is what actually works for Portugal.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="best-language-learning-apps-2026/" class="blog-card">
+        <span class="card-tag">App Reviews</span>
+        <h2>The Best Language Learning Apps in 2026 (Honest Review)</h2>
+        <p class="card-excerpt">An honest breakdown of every major language app by category: drill-based, reading-based, AI conversation, and audio courses.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="best-language-learning-apps-adults/" class="blog-card">
+        <span class="card-tag">App Reviews</span>
+        <h2>Best Language Learning Apps for Adults Who Are Done With Gamification</h2>
+        <p class="card-excerpt">No gems. No leaderboards. No cartoon owls. Just apps that respect your time and actually teach you a language.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="duolingo-vs-learnables/" class="blog-card">
+        <span class="card-tag">Comparisons</span>
+        <h2>Duolingo vs Learnables: Which One Actually Teaches You to Read?</h2>
+        <p class="card-excerpt">A fair, side-by-side comparison of two very different approaches to language learning. Drills vs stories.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="duolingo-alternative-portuguese/" class="blog-card">
+        <span class="card-tag">Alternatives</span>
+        <h2>The Best Duolingo Alternative for Learning Portuguese</h2>
+        <p class="card-excerpt">1000 days of Duolingo and still can't hold a conversation? You are not alone. Here is what works instead.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="beelinguapp-alternative/" class="blog-card">
+        <span class="card-tag">Alternatives</span>
+        <h2>Looking for a Beelinguapp Alternative? Here Is Why Readers Are Switching</h2>
+        <p class="card-excerpt">Beelinguapp pioneered bilingual reading. But buggy downloads, robotic AI voices, and wrong translations are pushing users elsewhere.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="babbel-alternative-portuguese/" class="blog-card">
+        <span class="card-tag">Alternatives</span>
+        <h2>Looking for a Babbel Alternative for Portuguese? What to Know Before You Switch</h2>
+        <p class="card-excerpt">Babbel is great for structured lessons, but it hits a ceiling for Portuguese learners. Here is what to look for next.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="free-portuguese-resources/" class="blog-card">
+        <span class="card-tag">Portuguese</span>
+        <h2>9 Free Resources for Learning Portuguese That Actually Work</h2>
+        <p class="card-excerpt">Not a list of 50 mediocre tools. These are the 9 free resources worth your time, with tips for getting the most out of each.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+</section>
+
+<!-- Language Science -->
+<h2 class="blog-section-title">The Science of Language Learning</h2>
+<section class="blog-grid">
+    <a href="comprehensible-input-language-learning/" class="blog-card">
+        <span class="card-tag">Language Science</span>
+        <h2>Comprehensible Input: The Science Behind Learning a Language by Reading</h2>
+        <p class="card-excerpt">40 years of research says the same thing: we acquire language when we understand messages. Here is what that means for you.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="what-is-comprehensible-input/" class="blog-card">
+        <span class="card-tag">Language Science</span>
+        <h2>What Is Comprehensible Input? The Language Learning Concept Everyone Should Know</h2>
+        <p class="card-excerpt">The plain-English explanation of the most important concept in language learning. No jargon, no academic papers.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="language-learning-methods-ranked/" class="blog-card">
+        <span class="card-tag">Language Science</span>
+        <h2>10 Language Learning Methods Ranked by Science</h2>
+        <p class="card-excerpt">From comprehensible input to sleep learning, we ranked every major method based on actual research. Some results will surprise you.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="why-bilingual-stories-work/" class="blog-card">
+        <span class="card-tag">Language Science</span>
+        <h2>Why Bilingual Stories Are the Fastest Way to Learn a Language</h2>
+        <p class="card-excerpt">The science behind comprehensible input and why reading stories beats flashcards, grammar drills, and textbooks.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="why-reading-beats-flashcards/" class="blog-card">
+        <span class="card-tag">Language Science</span>
+        <h2>Why Reading in a Foreign Language Beats Flashcards Every Time</h2>
+        <p class="card-excerpt">Research shows readers acquire vocabulary 3-5x faster than flashcard users. Here is why context changes everything.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="input-vs-output-language-learning/" class="blog-card">
+        <span class="card-tag">Language Science</span>
+        <h2>Input vs Output: Why You Should Read Before You Speak</h2>
+        <p class="card-excerpt">The biggest debate in language learning settled by research. Why building comprehension first leads to better speaking later.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="bilingual-brain-benefits/" class="blog-card">
+        <span class="card-tag">Language Science</span>
+        <h2>The Bilingual Brain: What Happens When You Learn a Second Language</h2>
+        <p class="card-excerpt">Learning a language literally changes your brain structure. More gray matter, better memory, and dementia delayed by 4-5 years.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="how-much-vocabulary-for-fluency/" class="blog-card">
+        <span class="card-tag">Language Science</span>
+        <h2>How Much Vocabulary Do You Actually Need to Be Fluent?</h2>
+        <p class="card-excerpt">250 words for survival. 1,000 for 80% of conversation. Here are the exact numbers and the fastest way to get there.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="why-some-people-learn-languages-faster/" class="blog-card">
+        <span class="card-tag">Language Science</span>
+        <h2>Why Some People Learn Languages Faster (It Is Not Talent)</h2>
+        <p class="card-excerpt">Aptitude explains less than 20% of outcomes. The other 80% comes from 7 learnable behaviors. Here they are.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+</section>
+
+<!-- Language Learning Tips -->
+<h2 class="blog-section-title">Language Learning Tips</h2>
+<section class="blog-grid">
+    <a href="how-polyglots-learn-languages/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>How Polyglots Actually Learn Languages (It Is Not What You Think)</h2>
+        <p class="card-excerpt">They don't have a gift. They have a method. And it almost always involves massive amounts of reading.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="quit-duolingo-what-actually-works/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>I Quit Duolingo After 1000 Days. Here Is What Actually Works.</h2>
+        <p class="card-excerpt">A founder's honest story of maintaining a streak for years, still not being able to read a menu, and finding a better way.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="why-you-keep-quitting-language-learning/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>Why You Keep Quitting Language Learning (And How to Stop)</h2>
+        <p class="card-excerpt">You don't lack discipline. The method just doesn't match how your brain works. Here are the 5 real reasons and how to fix each.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="why-language-apps-fail-after-30-days/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>Why Most Language Apps Fail You After 30 Days</h2>
+        <p class="card-excerpt">The first month feels amazing. Then progress stalls. Here is what happens in your brain and how to break through.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="daily-language-learning-habit/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>How to Build a Daily Language Learning Habit That Actually Sticks</h2>
+        <p class="card-excerpt">The science of habit formation applied to language learning. Plus a 30-day challenge template to get you started.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="how-long-to-learn-a-language/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>How Long Does It Really Take to Learn a New Language?</h2>
+        <p class="card-excerpt">FSI data, CEFR levels explained, and realistic timelines at 15, 30, and 60 minutes per day.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="learn-portuguese-through-stories/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>Learn Portuguese Through Stories: Why Reading Is the Best Method</h2>
+        <p class="card-excerpt">The case for story-based Portuguese learning, the self-scaffolding effect, and why context beats isolated vocabulary.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="learn-spanish-through-reading/" class="blog-card">
+        <span class="card-tag">Spanish</span>
+        <h2>Learn Spanish Through Reading: The Most Natural Way to Build Fluency</h2>
+        <p class="card-excerpt">How extensive reading builds Spanish vocabulary 3-5x faster than flashcards, and how to get started today.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="learn-a-language-by-yourself/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>How to Learn a Language by Yourself (The Complete Guide)</h2>
+        <p class="card-excerpt">The definitive self-study guide. Goals, methods, routines, resources, and a month-by-month timeline.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="learn-a-language-with-full-time-job/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>How to Learn a Language With a Full-Time Job</h2>
+        <p class="card-excerpt">You have more time than you think. 20 minutes a day adds up to 120+ hours per year. Here is where to find those minutes.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="language-learning-plateau/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>The Language Learning Plateau: Why You Stopped Improving and How to Fix It</h2>
+        <p class="card-excerpt">The 4 types of plateaus, why your brain is actually still learning, and a 30-day plan to break through.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="language-learning-burnout/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>Language Learning Burnout Is Real. Here Is How to Recover.</h2>
+        <p class="card-excerpt">Burnout is different from a plateau. Here are the 5 root causes and a step-by-step recovery plan.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="language-learning-for-introverts/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>Language Learning for Introverts: You Do Not Have to Talk to Strangers</h2>
+        <p class="card-excerpt">The language industry has a speaking obsession. Here is why introverts actually have a learning advantage.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="how-to-think-in-another-language/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>How to Start Thinking in Another Language</h2>
+        <p class="card-excerpt">The holy grail of language learning. What it feels like, when it starts happening, and how to create the conditions for it.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="how-many-languages-can-you-learn/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>How Many Languages Can You Learn at Once? The Honest Answer</h2>
+        <p class="card-excerpt">Most people should learn one at a time. Here is the math, the science, and what polyglots actually do.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="how-to-not-forget-a-language/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>The Science of Forgetting: How to Not Lose a Language You Learned</h2>
+        <p class="card-excerpt">Languages are never fully forgotten. Here is how fast you lose it, what fades first, and the minimum effort to maintain it.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="how-to-read-in-a-foreign-language/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>How to Read in a Foreign Language (Even as a Complete Beginner)</h2>
+        <p class="card-excerpt">You don't need to be intermediate to start reading. Bilingual texts remove the barrier entirely. Here is how to begin.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="easiest-languages-for-english-speakers/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>Easiest Languages to Learn for English Speakers (Ranked)</h2>
+        <p class="card-excerpt">Based on FSI data and linguistic analysis. From 600-hour Spanish to 2,200-hour Japanese, with everything in between.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="best-language-to-learn-2026/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>Best Language to Learn in 2026 (Based on Career, Travel, and Ease)</h2>
+        <p class="card-excerpt">Scored by career value, travel utility, and ease of learning. Plus a decision guide to help you choose.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+</section>
+
+<!-- Listicles -->
+<h2 class="blog-section-title">Myths, Lists, and Real Talk</h2>
+<section class="blog-grid">
+    <a href="signs-language-app-wasting-time/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>12 Signs Your Language App Is Wasting Your Time</h2>
+        <p class="card-excerpt">If you can match pictures to words but can't read a sentence, something is off. Here are 12 red flags to watch for.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="language-learning-myths/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>7 Language Learning Myths That Are Holding You Back</h2>
+        <p class="card-excerpt">Children don't learn faster. You don't need to live abroad. Flashcards aren't the answer. Here is what the research actually says.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="adults-learn-languages-differently/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>15 Reasons Adults Learn Languages Differently (And Why That Is an Advantage)</h2>
+        <p class="card-excerpt">Flip the script on "adults can't learn languages." You have 15 genuine advantages over children. Here they are.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="things-nobody-tells-you-learning-language/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>11 Things Nobody Tells You About Learning a Language as an Adult</h2>
+        <p class="card-excerpt">Real talk, no sugarcoating. You will feel stupid, you will plateau, and that is completely normal.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+</section>
+
+<!-- Portuguese Guides -->
+<h2 class="blog-section-title">Portuguese Guides</h2>
+<section class="blog-grid">
+    <a href="complete-guide-learn-portuguese/" class="blog-card">
+        <span class="card-tag">Portuguese</span>
+        <h2>The Complete Guide to Learning Portuguese on Your Own in 2026</h2>
+        <p class="card-excerpt">Every method, tool, and resource for learning Portuguese, organized into a month-by-month learning path.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="best-way-learn-portuguese-2026/" class="blog-card">
+        <span class="card-tag">Portuguese</span>
+        <h2>The Best Way to Learn Portuguese in 2026 (Based on Science)</h2>
+        <p class="card-excerpt">Evidence-based review of methods. The input-first approach backed by decades of research, with a practical monthly plan.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="european-portuguese-vs-brazilian/" class="blog-card">
+        <span class="card-tag">Portuguese</span>
+        <h2>European Portuguese vs Brazilian Portuguese: Which Should You Learn?</h2>
+        <p class="card-excerpt">Pronunciation, vocabulary, grammar, and cultural differences explained. Plus how to choose based on your goals.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="spanish-vs-portuguese/" class="blog-card">
+        <span class="card-tag">Language Learning</span>
+        <h2>Spanish vs Portuguese: Which Is Easier to Learn (And Should You Learn Both?)</h2>
+        <p class="card-excerpt">FSI data, 90% lexical similarity, and the "Portuguese first" strategy for learning both.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="learn-portuguese-in-3-months/" class="blog-card">
+        <span class="card-tag">Portuguese</span>
+        <h2>Can You Learn Portuguese in 3 Months? A Realistic Plan</h2>
+        <p class="card-excerpt">You will not be fluent. But you can reach conversational A2/B1. Here is the honest week-by-week plan.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="what-to-learn-first-portuguese/" class="blog-card">
+        <span class="card-tag">Portuguese</span>
+        <h2>What to Learn First in Portuguese: The 80/20 Guide</h2>
+        <p class="card-excerpt">The 100 most useful Portuguese words that cover 50% of daily conversation, organized by real-life situation.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="european-portuguese-pronunciation/" class="blog-card">
+        <span class="card-tag">Portuguese</span>
+        <h2>European Portuguese Pronunciation Guide: Why It Sounds So Different</h2>
+        <p class="card-excerpt">Closed vowels, nasal sounds, and the "sh" effect. Why European Portuguese sounds like no other Romance language.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="portuguese-listening-practice/" class="blog-card">
+        <span class="card-tag">Portuguese</span>
+        <h2>Portuguese Listening Practice: How to Train Your Ear for European Portuguese</h2>
+        <p class="card-excerpt">European Portuguese is notoriously hard to understand. Here is a 30-day plan to train your ear using reading and audio together.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="portuguese-common-mistakes/" class="blog-card">
+        <span class="card-tag">Portuguese</span>
+        <h2>15 Common Mistakes English Speakers Make in Portuguese (And How to Fix Them)</h2>
+        <p class="card-excerpt">From the ser/estar confusion to embarrassing false friends. Each mistake explained with the correction and a memory trick.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="portuguese-false-friends/" class="blog-card">
+        <span class="card-tag">Vocabulary</span>
+        <h2>Portuguese False Friends: 30 Words That Will Trick English Speakers</h2>
+        <p class="card-excerpt">"Puxe" doesn't mean push. "Constipado" doesn't mean constipated. 30 words ranked by embarrassment potential.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+</section>
+
+<!-- Practical Vocabulary & Phrases -->
+<h2 class="blog-section-title">Vocabulary and Phrases</h2>
+<section class="blog-grid">
+    <a href="portuguese-greetings/" class="blog-card">
+        <span class="card-tag">Vocabulary</span>
+        <h2>Portuguese Greetings: 25 Ways to Say Hello, Goodbye, and More</h2>
+        <p class="card-excerpt">From formal to casual, morning to night. Every greeting you need with pronunciation tips and cultural context.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="portuguese-food-vocabulary/" class="blog-card">
+        <span class="card-tag">Vocabulary</span>
+        <h2>Portuguese Food Vocabulary: 50 Essential Words for Restaurants and Markets</h2>
+        <p class="card-excerpt">Order like a local. 50 food words plus the phrases you need to navigate any Portuguese restaurant or market.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="portuguese-numbers-counting/" class="blog-card">
+        <span class="card-tag">Vocabulary</span>
+        <h2>Portuguese Numbers: How to Count from 1 to 1000 (With Pronunciation)</h2>
+        <p class="card-excerpt">Complete number reference with pronunciation, ordinals, and practical usage for prices, dates, and phone numbers.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="portuguese-verb-conjugation-beginners/" class="blog-card">
+        <span class="card-tag">Grammar</span>
+        <h2>Portuguese Verb Conjugation for Beginners: The Only 20 Verbs You Need</h2>
+        <p class="card-excerpt">20 essential verbs fully conjugated with example sentences. Plus why reading teaches conjugation better than memorizing tables.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="spanish-for-beginners-essential-phrases/" class="blog-card">
+        <span class="card-tag">Vocabulary</span>
+        <h2>Spanish for Beginners: 40 Essential Phrases You Need to Know</h2>
+        <p class="card-excerpt">40 phrases organized by real situations: greetings, restaurants, shopping, transport, and emergencies.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="a1-portuguese-reading-practice/" class="blog-card">
+        <span class="card-tag">Reading Practice</span>
+        <h2>A1 Portuguese Reading Practice: Easy Texts for Absolute Beginners</h2>
+        <p class="card-excerpt">5 short passages in Portuguese with English translations, vocabulary highlights, and tips for building your reading skills from zero.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+</section>
+
+<!-- Practical Situation Guides -->
+<h2 class="blog-section-title">Practical Guides by Situation</h2>
+<section class="blog-grid">
+    <a href="moving-to-portugal-language-guide/" class="blog-card">
+        <span class="card-tag">Portuguese</span>
+        <h2>Moving to Portugal? The Language Guide Nobody Gives You</h2>
+        <p class="card-excerpt">The phrases you actually need day one. From ordering coffee to dealing with AIMA and the tax office.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="portuguese-for-expats-lisbon/" class="blog-card">
+        <span class="card-tag">Practical Portuguese</span>
+        <h2>Portuguese for Expats in Lisbon: The Phrases You Actually Need</h2>
+        <p class="card-excerpt">Ultra-practical. Organized by real Lisbon situations: Continente, the pharmacy, your landlord, AIMA, and public transport.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="portuguese-for-digital-nomads/" class="blog-card">
+        <span class="card-tag">Practical Portuguese</span>
+        <h2>Portuguese for Digital Nomads: Work, Live, and Thrive in Portugal</h2>
+        <p class="card-excerpt">Coworking vocab, cafe ordering for the daily work spot, apartment hunting, NIF, and making friends outside the expat bubble.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="portuguese-for-travelers/" class="blog-card">
+        <span class="card-tag">Practical Portuguese</span>
+        <h2>Essential Portuguese Phrases for Travelers: Your Complete Survival Guide</h2>
+        <p class="card-excerpt">40+ phrases for airports, hotels, restaurants, shopping, and emergencies. Your pocket phrasebook for Portugal.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+    <a href="portuguese-for-retirement/" class="blog-card">
+        <span class="card-tag">Practical Portuguese</span>
+        <h2>Learning Portuguese for Retirement in Portugal: A Practical Guide</h2>
+        <p class="card-excerpt">Healthcare vocabulary, market language, neighbor phrases, and daily routines. It is never too late to start.</p>
+        <span class="card-meta">March 10, 2026</span>
+    </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-left">&copy; 2026 Learnables. All rights reserved.</div>
+    <div class="footer-links">
+        <a href="/blog/">Blog</a>
+        <a href="/support.html">Support</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms-and-conditions.html">Terms &amp; Conditions</a>
+        <a href="mailto:support@learnables.co">Contact</a>
+    </div>
+</footer>
+
+</body>
+</html>

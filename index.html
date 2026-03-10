@@ -3,454 +3,1790 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Mini-Course Creator</title>
-    <link rel="icon" href="favicon.jpeg" type="image/jpeg">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Learnables | Learn a Language by Reading Stories</title>
+    <meta name="description" content="Learn languages by reading bilingual stories. Tap any word for instant translation. Listen to native audio with word-by-word highlighting. Free to start.">
+    <link rel="icon" href="app_icon.png" type="image/png">
+    <link rel="canonical" href="https://learnables.co">
+
+    <!-- Apple Smart App Banner -->
+    <meta name="apple-itunes-app" content="app-id=6756303366">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Learnables | Learn a Language by Reading Stories">
+    <meta property="og:description" content="Learn languages naturally by reading bilingual stories with native audio and instant word translation.">
+    <meta property="og:image" content="https://learnables.co/hero.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="500">
+    <meta property="og:url" content="https://learnables.co">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "Learnables",
+        "description": "Learn languages by reading bilingual stories with native audio and instant word translation.",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "EducationApplication",
+        "offers": [
+            {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "Free tier - 3 pages per day"
+            },
+            {
+                "@type": "Offer",
+                "price": "5.99",
+                "priceCurrency": "USD",
+                "description": "Premium - unlimited reading",
+                "priceValidUntil": "2027-12-31"
+            }
+        ],
+        "url": "https://learnables.co",
+        "downloadUrl": [
+            "https://apps.apple.com/us/app/learnables-bilingual-stories/id6756303366",
+            "https://play.google.com/store/apps/details?id=com.learnables.learnables"
+        ],
+        "screenshot": "https://learnables.co/hero.png",
+        "softwareVersion": "1.0",
+        "creator": {
+            "@type": "Organization",
+            "name": "Learnables",
+            "url": "https://learnables.co"
+        }
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #2C3E50;
+            --gold: #EDB347;
+            --cream: #FDFBF7;
+            --warm-yellow: #FFF59D;
+            --text: #2C3E50;
+            --text-light: #5D6D7E;
         }
 
         body {
-            font-family: 'Inter', Raleway, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--text);
+            background-color: var(--cream);
             line-height: 1.6;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            background-color: #fffdfa; /* Subtle light peach background */
-
+            -webkit-font-smoothing: antialiased;
         }
 
-        .logo {
-            max-width: 100px;
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.25rem 1.5rem;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--navy);
+        }
+        .nav-logo img { height: 36px; width: 36px; border-radius: 8px; }
+        .nav-logo span { font-family: 'Lora', serif; font-weight: 700; font-size: 1.25rem; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--navy); }
+
+        /* HERO */
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        .hero-text { flex: 1; }
+        .hero-visual {
+            flex: 0 0 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-mockup {
+            width: 260px;
+            padding: 12px;
+            background: #1a1a1a;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(44, 62, 80, 0.25), inset 0 0 0 2px rgba(255,255,255,0.1);
+        }
+        .phone-mockup img {
+            width: 100%;
+            height: auto;
+            border-radius: 28px;
+            display: block;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.4rem 0.85rem;
+            border-radius: 100px;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.02em;
+        }
+        h1 {
+            font-family: 'Lora', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--navy);
             margin-bottom: 1rem;
         }
-
-        h1 {
-            font-family: 'Raleway', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #1a1a1a;
-            line-height: 1.2;
+        h1 span { color: var(--gold); }
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            max-width: 480px;
+            line-height: 1.7;
         }
+        .hero-proof {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1.75rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .hero-proof span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .hero-proof .check {
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .store-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--navy);
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .store-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.2);
+        }
+        .store-btn svg { width: 22px; height: 22px; fill: white; }
+        .store-btn .store-label { display: flex; flex-direction: column; line-height: 1.2; }
+        .store-btn .store-label small { font-size: 0.65rem; font-weight: 400; opacity: 0.8; }
 
-        h2 {
-            font-family: 'Raleway', sans-serif;
-            font-size: 1.25rem;
-            color: #1a1a1a;
+        /* INTERACTIVE DEMO */
+        .demo {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+        .demo-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .demo-header h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--navy);
             margin-bottom: 0.5rem;
         }
-
-        .brand-icons {
+        .demo-header p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+        .demo-lang-tabs {
             display: flex;
             justify-content: center;
             gap: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
         }
-
-        .brand-icons img {
-            width: 25px;
-            height: 25px;
-            object-fit: contain;
+        .demo-lang-tab {
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            border: 2px solid rgba(44, 62, 80, 0.12);
+            background: white;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
         }
-
-        .main-image {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 2rem;
+        .demo-lang-tab:hover {
+            border-color: var(--gold);
+            color: var(--navy);
         }
-
-        .feature-container {
+        .demo-lang-tab.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+        }
+        .demo-store-buttons {
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        .demo-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(44, 62, 80, 0.1);
+        }
+        .demo-image {
+            background: var(--navy);
+        }
+        .demo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .demo-reader {
+            padding: 1.75rem 2rem;
             display: flex;
             flex-direction: column;
-            gap: 0 rem;
-            width: 100%;
-            margin-bottom: 2rem;
         }
-
-        .feature-item {
+        .demo-meta {
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Ensure items start from the left */
-            background-color: #f9f9f900;
-            padding: 0.2rem;
-            border-radius: 1px;
-            font-size: 13px;
-            /*box-shadow: 0 4px 6px rgba(0,0,0,0.1);*/
-            text-align: left; /* Align text to the left */
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
         }
-
-        .feature-item img {
-            width: 22px;
-            height: 22px;
-            margin-right: 1rem;
-            flex-shrink: 0; /* Prevent icon from shrinking */
+        .demo-title {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--navy);
         }
-
-        .feature-item p {
-            flex-grow: 1; /* Allow text to take remaining space */
-        }
-
-
-        .waitlist-button {
-            font-family: 'Raleway', sans-serif;
-            background-color: #FFC702;
-            color: black;
-            border: none;
-            border-radius: 50px;
-            padding: 12px 24px;
-            font-size: 1rem;
-            font-weight: 1000;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .waitlist-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .fomo-container {
-            background-color: #f4f4f4;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-        }
-
-        .exclusive-offers {
-            background-color: rgba(255, 199, 2, 0.1);
-            border: 1px solid rgba(255, 199, 2, 0.3);
-            border-radius: 8px;
-            padding: 0.75rem;
-            max-width: 500px;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .exclusive-offers h3 {
-            color: #1a1a1a;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+        .demo-badge {
+            background: rgba(237, 179, 71, 0.15);
+            color: #b8860b;
+            font-size: 0.75rem;
             font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 100px;
+        }
+        .demo-page {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-left: auto;
+        }
+        .demo-sentences {
+            flex: 1;
+            overflow-y: auto;
+            max-height: 380px;
+            padding-right: 0.5rem;
+        }
+        .demo-sentence {
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.15s;
+        }
+        .demo-sentence:hover {
+            background: rgba(237, 179, 71, 0.04);
+        }
+        .demo-sentence.active {
+            background: rgba(237, 179, 71, 0.06);
+        }
+        .demo-words {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--navy);
+        }
+        .demo-word {
+            display: inline;
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 0.1rem 0.15rem;
+            transition: background 0.15s;
+            position: relative;
+        }
+        .demo-word:hover {
+            background: rgba(237, 179, 71, 0.15);
+        }
+        .demo-word.highlighted {
+            background: #FFF59D;
+        }
+        .demo-word-tooltip {
+            position: absolute;
+            bottom: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--navy);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.35rem 0.7rem;
+            border-radius: 8px;
+            white-space: nowrap;
+            pointer-events: none;
+            animation: tooltipIn 0.15s ease;
+            z-index: 10;
+        }
+        .demo-word-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: var(--navy);
+        }
+        /* Tooltip below the word when near top of container */
+        .demo-word-tooltip.tooltip-below {
+            bottom: auto;
+            top: calc(100% + 6px);
+        }
+        .demo-word-tooltip.tooltip-below::after {
+            top: auto;
+            bottom: 100%;
+            border-top-color: transparent;
+            border-bottom-color: var(--navy);
+        }
+        @keyframes tooltipIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        .demo-translation {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 0.25rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.25s ease, opacity 0.25s ease;
+            opacity: 0;
+        }
+        .demo-sentence.show-translation .demo-translation {
+            max-height: 60px;
+            opacity: 1;
+        }
+        .demo-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-top: 1rem;
+            margin-top: auto;
+            border-top: 1px solid rgba(44, 62, 80, 0.08);
+        }
+        .demo-play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: var(--gold);
+            color: var(--navy);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.15s;
+        }
+        .demo-play-btn:hover { transform: scale(1.08); }
+        .demo-progress {
+            flex: 1;
+            height: 6px;
+            background: rgba(44, 62, 80, 0.08);
+            border-radius: 3px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .demo-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--gold);
+            border-radius: 3px;
+            transition: width 0.1s linear;
+        }
+        .demo-time {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            min-width: 32px;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+        .demo-hint {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            line-height: 1.6;
+        }
+        .demo-hint-mobile { display: none; }
+        @media (hover: none), (max-width: 768px) {
+            .demo-hint-desktop { display: none; }
+            .demo-hint-mobile { display: inline; }
+        }
+        /* Touch devices: dashed underline on words to show they're tappable */
+        @media (hover: none) {
+            .demo-word {
+                border-bottom: 1.5px dashed rgba(237, 179, 71, 0.5);
+            }
+            .demo-word.highlighted {
+                border-bottom-color: transparent;
+            }
+            .demo-sentence {
+                padding: 0.6rem 0.5rem;
+                border-radius: 8px;
+            }
+            .demo-sentence.show-translation {
+                background: rgba(237, 179, 71, 0.05);
+            }
+        }
+        /* First-tap nudge */
+        .demo-tap-nudge {
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 600;
+            animation: nudgePulse 2s ease infinite;
+        }
+        @keyframes nudgePulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        .demo-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .demo-footer p {
+            color: var(--text-light);
+            font-size: 0.95rem;
         }
 
-        .offer-grid {
+        /* FEATURES */
+        .features {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+        .features-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .features-header h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .features-header p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
+            gap: 2rem;
         }
-
-        .offer-item {
-            background-color: white;
-            border-radius: 6px;
-            padding: 0.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.05);
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.06);
+            transition: transform 0.2s;
         }
-
-        .offer-item .badge {
-            font-weight: 700;
-            color: #d8a705;
-            margin-bottom: 0.25rem;
-            font-size: 0.7rem;
-        }
-
-        .offer-item .description {
-            font-size: 0.65rem;
-            color: #666;
-        }
-
-        .exclusive-offers .countdown {
+        .feature-card:hover { transform: translateY(-3px); }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(237, 179, 71, 0.12);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 1rem;
-            font-size: 0.6rem;
-            color: #888;
+            font-size: 1.5rem;
+        }
+        .feature-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* APP SCREENSHOTS */
+        .screenshots {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+        .screenshots h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 2.5rem;
+        }
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            align-items: start;
+        }
+        .screenshot-item {
+            text-align: center;
+        }
+        .screenshot-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.75rem;
+        }
+        .screenshot-placeholder {
+            width: 100%;
+            aspect-ratio: 9 / 19.5;
+            background: white;
+            border: 2px dashed rgba(44, 62, 80, 0.2);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-align: center;
+            line-height: 1.4;
+        }
+        /* When real screenshots are added, replace .screenshot-placeholder with img */
+        .screenshot-item img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 8px 30px rgba(44, 62, 80, 0.12);
+        }
+
+        /* WHO IS THIS FOR */
+        .who-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+        .who-section h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .who-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.06);
+            border-left: 4px solid var(--gold);
+        }
+        .who-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .who-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* SCIENCE SECTION */
+        .science {
+            background: white;
+            padding: 4rem 1.5rem;
+        }
+        .science-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .science h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+        .science p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .science blockquote {
+            background: var(--cream);
+            border-left: 4px solid var(--gold);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: left;
+        }
+        .science blockquote p {
+            font-family: 'Lora', serif;
+            font-size: 1.05rem;
+            color: var(--navy);
             font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        .science blockquote cite {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-style: normal;
+            color: var(--text-light);
         }
 
-        .highlight {
-        position: relative; /* Position relative for absolute positioning of the SVG */
-        display: inline-block; /* Make the span an inline-block to allow padding */
-        padding: 0.2rem 0.4rem; /* Add some padding around the text */
-        color: #1a1a1a; /* Text color */
-    }
+        /* VALUE BAR */
+        .value-bar {
+            background: var(--navy);
+            color: white;
+            padding: 3rem 1.5rem;
+        }
+        .value-bar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        .value-item { text-align: center; }
+        .value-item .number {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .value-item .label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 0.25rem;
+        }
 
-    .highlight::before {
-        content: ""; /* Create a pseudo-element */
-        position: absolute; /* Position it absolutely */
-        top: 0; /* Align to the top */
-        left: -0.5rem; /* Align to the left */
-        right: -0.0rem; /* Stretch to the right */
-        bottom: 0; /* Stretch to the bottom */
-        background-image: url('highlight.svg'); /* Use the SVG as a background */
-        background-size: cover; /* Cover the entire span */
-        z-index: -1; /* Place it behind the text */
-    }
+        /* COMPARISON TABLE */
+        .comparison {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+        .comparison h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.06);
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        .comparison-table thead th {
+            background: var(--navy);
+            color: white;
+            font-weight: 600;
+        }
+        .comparison-table thead th:first-child {
+            background: transparent;
+            color: transparent;
+        }
+        .comparison-table thead th.highlight {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .comparison-table tbody tr {
+            border-bottom: 1px solid rgba(44, 62, 80, 0.06);
+        }
+        .comparison-table tbody tr:last-child {
+            border-bottom: none;
+        }
+        .comparison-table tbody td:first-child {
+            font-weight: 600;
+            color: var(--navy);
+        }
+        .comparison-table tbody td {
+            color: var(--text-light);
+        }
+        .comparison-table .col-highlight {
+            background: rgba(237, 179, 71, 0.06);
+        }
+        .comparison-table .yes { color: #27ae60; font-weight: 600; }
+        .comparison-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            vertical-align: middle;
+            margin-right: 0.35rem;
+        }
+        .comparison-table .no { color: #e74c3c; }
 
-        @media (min-width: 601px) {
-            body {
-                height: auto; /* Allow body to grow with content */
-                min-height: 100vh;
-                padding: 2rem;
-                overflow-y: auto; /* Enable scrolling */
-                display: flex; /* Keep the flex display */
+        /* HOW IT WORKS */
+        .how-it-works {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+        .how-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .how-header h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .step {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            color: var(--navy);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .step h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+        .step p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* SOCIAL PROOF */
+        .social-proof {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
+        .social-proof h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .testimonial {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.06);
+        }
+        .testimonial .stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: 2px;
+        }
+        .testimonial blockquote {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+        .testimonial cite {
+            font-size: 0.8rem;
+            font-style: normal;
+            color: var(--text-light);
+        }
+
+        /* FAQ */
+        .faq {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
+        .faq h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .faq-item {
+            border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+            padding: 1.25rem 0;
+        }
+        .faq-item:first-of-type {
+            border-top: 1px solid rgba(44, 62, 80, 0.1);
+        }
+        .faq-q {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--navy);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .faq-q::after {
+            content: '+';
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--gold);
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+        .faq-item.open .faq-q::after {
+            transform: rotate(45deg);
+        }
+        .faq-a {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .faq-item.open .faq-a {
+            max-height: 200px;
+            padding-top: 0.75rem;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 4rem 1.5rem;
+            background: linear-gradient(180deg, var(--cream) 0%, rgba(237, 179, 71, 0.08) 100%);
+        }
+        .cta h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .cta p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+        .cta .store-buttons { justify-content: center; }
+
+        /* STICKY MOBILE CTA */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 -4px 20px rgba(44, 62, 80, 0.12);
+            z-index: 100;
+            text-align: center;
+        }
+        .sticky-cta a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 360px;
+            background: var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+            padding: 0.85rem 1.5rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        /* FOOTER */
+        footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(44, 62, 80, 0.1);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-left {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .footer-links a {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--navy); }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .hero {
                 flex-direction: column;
-                justify-content: center; /* Center vertically */
+                text-align: center;
+                padding: 2rem 1.5rem;
+                gap: 2rem;
             }
-
-            h1 {
-               margin-bottom: 2rem;
-            }
-
-            .desktop-container {
-                /* Add this to center the container */
+            .hero-visual { flex: none; order: 99; }
+            .phone-mockup { width: 200px; padding: 10px; border-radius: 32px; }
+            .phone-mockup img { border-radius: 22px; }
+            .hero-sub { margin-left: auto; margin-right: auto; }
+            .hero-proof { flex-direction: column; align-items: center; gap: 0.5rem; }
+            h1 { font-size: 2.2rem; }
+            .store-buttons { justify-content: center; }
+            .features-grid { grid-template-columns: 1fr; }
+            .screenshots-grid {
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                margin: auto 0; /* This helps with centering when there's extra space */
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 1rem;
+                padding-bottom: 0.5rem;
+                -webkit-overflow-scrolling: touch;
             }
-
-            .brand-icons {
-                display: flex;
-                justify-content: left;
-                gap: 0.5rem;
-                margin-bottom: 2rem;
+            .screenshot-item {
+                flex: 0 0 70%;
+                scroll-snap-align: center;
             }
-
-            .left-side {
-                width: 50%; /* Ensure equal width */
-                max-width: 50%;
-                padding-right: 2rem;
+            .demo-container { grid-template-columns: 1fr; }
+            .demo-image { max-height: 180px; overflow: hidden; }
+            .demo-reader { padding: 1rem; }
+            .demo-sentences { max-height: 280px; }
+            .demo-words { font-size: 1rem; line-height: 2; }
+            .demo-meta { gap: 0.5rem; }
+            .demo-title { font-size: 0.95rem; }
+            .demo-page { display: none; }
+            .demo-lang-tabs { gap: 0.4rem; }
+            .demo-lang-tab { padding: 0.45rem 1rem; font-size: 0.85rem; }
+            .who-grid { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; }
+            .testimonials { grid-template-columns: 1fr; }
+            .value-bar-inner { gap: 2rem; }
+            .nav-links { gap: 1rem; }
+            .nav-links a { font-size: 0.8rem; }
+            footer {
+                flex-direction: column;
+                text-align: center;
+                padding-bottom: 5rem; /* space for sticky CTA */
             }
-
-            .right-side {
-                width: 60%; /* Ensure equal width */
-                max-width: 60%; /* Prevent overflow */
-            }
-
-            .left-side {
-                text-align: left;
-                padding-right: 1rem;
-            }
-
-            .right-side {
-        width: 60%; /* Ensure equal width */
-        max-width: 60%; /* Prevent overflow */
-        display: flex;
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center items horizontally */
-    }
-
-    .text-below {
-        margin-top: 1rem; /* Add space between the image and the text */
-        text-align: center; /* Center the text */
-    }
-
-            .main-image {
-                max-width: 100%;
-                height: auto;
-            }
-
-            .mobile-only {
-                display: none;
-            }
-
-            .exclusive-offers {
-                padding: 0.5rem;
-                max-width: 80%;
-            }
-
-            .feature-item {
-                flex-direction: row; /* Explicitly set to row */
-                align-items: left; /* Center items vertically */
-                text-align: left; /* Keep text left-aligned */
-                margin-top: 0.3rem;
-                margin-bottom: 0.3rem;
-
-            }
-
-            .feature-item img {
-                margin-right: 1rem; /* Restore right margin */
-                margin-bottom: 0; /* Remove bottom margin */
-            }
-
-            .feature-container {
-                max-width: 80%; /* Set max-width to 90% for better mobile layout */
-            }
-
-            .waitlist-button {
-                margin-top: 0rem;
-                margin-bottom: 1rem;
-
-            }
-
-            
-        }
-
-        @media (max-width: 600px) {
-            .desktop-only {
-                display: none;
-            }
-
-            body {
-                height: auto;
-                min-height: 100vh;
-                display: flex;
-                padding: 1rem;
-                overflow-y: auto;
-                justify-content: center;
-        
-            }
-
-            h1 {
-                font-size: 30px;
-            }
-
-            h2 {
-                font-size: 17px;
-            }
-
-            .waitlist-button {
-                margin-top: 1rem;
-                margin-bottom: 1rem;
-            }
-
-            .brand-icons {
-                margin-bottom: 1rem;
-            }
-
-            .main-image {
-                margin-bottom: 1.5rem;
-                max-width: 90%;
-            }
-
-            .feature-item {
-                flex-direction: row; /* Explicitly set to row */
-                align-items: center; /* Center items vertically */
-                text-align: left; /* Keep text left-aligned */
-                margin-bottom: 0.3rem;
-            }
-
-            .feature-item img {
-                margin-right: 1rem; /* Restore right margin */
-                margin-bottom: 0; /* Remove bottom margin */
-            }
-
-            .feature-container {
-                max-width: 80%; /* Set max-width to 90% for better mobile layout */
-                margin: 0 auto; /* Center the container */
-            }
-
-            .exclusive-offers {
-                padding: 0.5rem;
-                margin-top: 0.5rem;
-                max-width: 100%;
-                margin: 0 auto;
-            }
-
-            .offer-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.25rem;
-            }
-
-            .offer-item {
-                padding: 0.75rem;
-            }
-
-            .offer-item .badge {
-                font-size: 0.7rem;
-            }
-
-            .offer-item .description {
-                font-size: 0.7rem;
-            }
-
-            .exclusive-offers .countdown {
-                font-size: 0.7rem;
-                margin-top: 0.5rem;
-            }
-
-            .exclusive-offers h3 {
-                font-size: 1 rem;
-                margin-bottom: 0.25rem;
-            }
+            .sticky-cta { display: block; }
+            .comparison { padding: 3rem 1rem; overflow-x: auto; }
+            .comparison h2 { font-size: 1.5rem; }
+            .comparison-table { font-size: 0.75rem; min-width: 340px; }
+            .comparison-table th,
+            .comparison-table td { padding: 0.5rem 0.5rem; }
+            .comparison-icon { width: 18px; height: 18px; margin-right: 0.2rem; }
+            .value-bar { padding: 2rem 1rem; }
+            .value-bar-inner { gap: 1.5rem; }
+            .value-item .number { font-size: 1.4rem; }
+            .science h2 { font-size: 1.5rem; }
+            .science p { font-size: 0.95rem; }
+            .science blockquote { padding: 1rem; }
+            .demo-store-buttons { justify-content: center; }
+            .faq h2, .social-proof h2, .who-section h2, .features-header h2, .screenshots h2 { font-size: 1.5rem; }
+            .cta h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <div class="desktop-container">
-        <div class="left-side">
-            <img src="logo.png" alt="Logo" class="logo">
-            <h1>Use <span class="highlight">AI</span> to turn any topic into a <span class="highlight">mini-course</span></h1>
-            
-        
 
-        <div class="mobile-only">
-            <h2>With proven learning templates of:</h2>
-    
-            <div class="brand-icons">
-                <img src="Duolingo.png" alt="Icon 1">
-                <img src="Brilliant.svg" alt="Icon 2">
-                <img src="Quizlet.webp" alt="Icon 3">
-            </div>
-            <img src="main.png" alt="AI Mini-Course Creator" class="main-image">
-        </div>
+<!-- NAV -->
+<nav>
+    <a href="/" class="nav-logo">
+        <img src="app_icon.png" alt="Learnables">
+        <span>Learnables</span>
+    </a>
+    <div class="nav-links">
+        <a href="blog/">Blog</a>
+    </div>
+</nav>
 
-        <div class="feature-container">
-            <div class="feature-item">
-                <img src="1.webp" alt="Feature 1 Icon">
-                <p>Pick a <b>learning style from top-apps</b> like Duolingo and Quizlet.</p>
-            </div>
-            <div class="feature-item">
-                <img src="2.webp" alt="Feature 2 Icon">
-                <p>Choose a topic, upload ideas & info, and let our <b>AI agent</b> do the rest.</p>
-            </div>
-            <div class="feature-item">
-                <img src="3.webp" alt="Feature 3 Icon">
-                <p>Complete your Learnable, share it, or even <b>sell it</b> in the marketplace.</p>
-            </div>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-text">
+        <div class="badge">Free to start, no credit card required</div>
+        <h1>Learn a language by <span>reading stories you love</span></h1>
+        <p class="hero-sub">Tap any word for its translation. Listen to native audio with word-by-word highlighting. Your brain picks up the language naturally, just by reading.</p>
+        <div class="hero-proof">
+            <span><span class="check">&#10003;</span> All stories free to start reading</span>
+            <span><span class="check">&#10003;</span> Portuguese, Spanish, and more coming</span>
+            <span><span class="check">&#10003;</span> Works for complete beginners</span>
         </div>
-    
-        <button class="waitlist-button" onclick="window.location.href='https://tally.so/r/nGboO2';">Secure Your Spot on the Waitlist</button>
-    
-        <div class="exclusive-offers">
-            <div class="countdown">
-                ⏳ Limited spots available!
-            </div>
-            <div class="offer-grid">
-                <div class="offer-item">
-                    <div class="badge">First 100</div>
-                    <div class="description"><b>Free</b> Lifetime Pro</div>
+        <div class="store-buttons" id="hero-store-buttons">
+            <a href="https://apps.apple.com/us/app/learnables-bilingual-stories/id6756303366" class="store-btn store-btn-ios" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                <div class="store-label">
+                    <small>Download on the</small>
+                    App Store
                 </div>
-                <div class="offer-item">
-                    <div class="badge">Next 1000</div>
-                    <div class="description">50% Off Pro</div>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.learnables.learnables" class="store-btn store-btn-android" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.396 13l2.302-2.492zM5.864 2.658L16.8 9.99l-2.302 2.302L5.864 2.658z"/></svg>
+                <div class="store-label">
+                    <small>Get it on</small>
+                    Google Play
                 </div>
-                <div class="offer-item">
-                    <div class="badge">Early Access</div>
-                    <div class="description">Free Gift</div>
-                </div>
-            </div>
-            
+            </a>
         </div>
     </div>
-   
-        
-    <div class="right-side desktop-only">
-        <img src="main.png" alt="AI Mini-Course Creator" class="main-image">
-        <h2 class="text-below">With proven learning templates of:</h2>
-        <div class="brand-icons">
-            <img src="Duolingo.png" alt="Icon 1">
-            <img src="Brilliant.svg" alt="Icon 2">
-            <img src="Quizlet.webp" alt="Icon 3">
+    <div class="hero-visual">
+        <div class="phone-mockup">
+            <img src="app_screenshot.png" alt="Learnables app reading screen" loading="eager">
         </div>
     </div>
+</section>
+
+<!-- INTERACTIVE DEMO -->
+<section class="demo" id="demo">
+    <div class="demo-header">
+        <h2>Try it right now</h2>
+        <p>This is a real page from the app. Tap any word. Press play. It's exactly like reading in the app.</p>
+    </div>
+    <div class="demo-lang-tabs" id="demo-lang-tabs"></div>
+    <div class="demo-container">
+        <div class="demo-image">
+            <img src="https://assets.learnables.co/books/the-silent-island/images/page_1.webp" alt="Story illustration" loading="lazy">
+        </div>
+        <div class="demo-reader">
+            <div class="demo-meta">
+                <span class="demo-title" id="demo-title">A Ilha Silenciosa</span>
+                <span class="demo-badge" id="demo-badge">Beginner &middot; Portuguese</span>
+                <span class="demo-page">Page 1</span>
+            </div>
+            <div class="demo-sentences" id="demo-sentences"></div>
+            <div class="demo-controls">
+                <button class="demo-play-btn" id="demo-play-btn" aria-label="Play audio">
+                    <svg id="play-icon" viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                    <svg id="pause-icon" viewBox="0 0 24 24" width="24" height="24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/></svg>
+                </button>
+                <div class="demo-progress">
+                    <div class="demo-progress-bar" id="demo-progress-bar"></div>
+                </div>
+                <span class="demo-time" id="demo-time">0:00</span>
+            </div>
+            <div class="demo-hint">
+                <span class="demo-hint-desktop">Tap any word for its translation. Click a sentence for the full meaning. Press play for native audio with word-by-word highlighting.</span>
+                <span class="demo-hint-mobile">
+                    <strong>Tap a word</strong> = instant translation &nbsp;&middot;&nbsp;
+                    <strong>Tap a sentence</strong> = full English &nbsp;&middot;&nbsp;
+                    <strong>Press play</strong> = hear it spoken
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="demo-footer">
+        <p>This is just one page of one story. There are many more in the app, all free to start reading.</p>
+        <div class="store-buttons demo-store-buttons">
+            <a href="https://apps.apple.com/us/app/learnables-bilingual-stories/id6756303366" class="store-btn store-btn-ios" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                <div class="store-label"><small>Download on the</small>App Store</div>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.learnables.learnables" class="store-btn store-btn-android" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.396 13l2.302-2.492zM5.864 2.658L16.8 9.99l-2.302 2.302L5.864 2.658z"/></svg>
+                <div class="store-label"><small>Get it on</small>Google Play</div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <div class="features-header">
+        <h2>Stories worth reading, in a language worth learning</h2>
+        <p>Not textbook dialogues. Real stories about travel, culture, love, and daily life. Written to be interesting first, educational second.</p>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">&#128218;</div>
+            <h3>Bilingual stories</h3>
+            <p>Read engaging stories with the translation right there. No dictionary lookups, no breaking your flow.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#128065;</div>
+            <h3>Tap any word</h3>
+            <p>Don't know a word? Tap it. Tap a sentence for the full meaning. Zero friction.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#127911;</div>
+            <h3>Native audio narration</h3>
+            <p>Listen while you read. Words highlight as they're spoken so your ears and eyes learn together.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#128218;</div>
+            <h3>Stories you'll actually enjoy</h3>
+            <p>A man gets lost in Lisbon. A woman starts over in Barcelona. No "the cat is on the table." Stories with real plots that make you want to keep reading.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#128200;</div>
+            <h3>Grows with you</h3>
+            <p>Start with simple stories and short sentences. As you improve, the stories get richer and more complex. Naturally.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">&#9749;</div>
+            <h3>Every story is free to start</h3>
+            <p>Browse the full library and read 3 pages a day. Any story, any level. No trial, no credit card, no ads. Just stories.</p>
+        </div>
+    </div>
+</section>
+
+<!-- APP SCREENSHOTS -->
+<!-- PLACEHOLDER: Replace src values with real app screenshots (e.g. library, reading screen, word tap) -->
+<section class="screenshots">
+    <h2>A reading experience designed to feel effortless</h2>
+    <div class="screenshots-grid">
+        <div class="screenshot-item">
+            <img src="Learnables Bilingual Stories.webp" alt="Learnables library screen">
+            <p>Browse stories by language and level</p>
+        </div>
+        <div class="screenshot-item">
+            <img src="Learnables Bilingual Stories copy 2.webp" alt="Native narration at your pace">
+            <p>Read with native audio and word highlighting</p>
+        </div>
+        <div class="screenshot-item">
+            <img src="Learnables Bilingual Stories copy.webp" alt="Tap any word to translate">
+            <p>Tap any word for instant translation</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHO IS THIS FOR -->
+<section class="who-section">
+    <h2>Built for people who actually want to learn</h2>
+    <div class="who-grid">
+        <div class="who-card">
+            <h3>Gave up on Duolingo</h3>
+            <p>You did the streaks, collected the gems, but still can't read a menu. Stories teach you real language, not trivia.</p>
+        </div>
+        <div class="who-card">
+            <h3>Living abroad (or planning to)</h3>
+            <p>You're moving to a new country and need to actually understand what people say. Not just textbook phrases.</p>
+        </div>
+        <div class="who-card">
+            <h3>Busy adults with 5 minutes</h3>
+            <p>You don't have time for classes. But you can read a page on your commute, before bed, or waiting for coffee.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SCIENCE / WHY STORIES WORK -->
+<section class="science">
+    <div class="science-inner">
+        <h2>Why stories work better than drills</h2>
+        <p>Learnables is built on <strong>comprehensible input</strong>, the idea that you acquire language by understanding messages, not by memorizing rules. It's backed by over 40 years of research and it's how every polyglot you admire actually learned.</p>
+        <blockquote>
+            <p>"We acquire language in one way, and only one way: when we understand messages."</p>
+            <cite>- Stephen Krashen, linguist &amp; researcher, University of Southern California</cite>
+        </blockquote>
+        <p>When you read a story with translation support, your brain does the work of connecting meaning to words. Naturally, without drilling. That's why words stick when you learn them in stories.</p>
+    </div>
+</section>
+
+<!-- VALUE BAR -->
+<section class="value-bar">
+    <div class="value-bar-inner">
+        <div class="value-item">
+            <div class="number">Unlimited</div>
+            <div class="label">Reading with Premium</div>
+        </div>
+        <div class="value-item">
+            <div class="number">All stories</div>
+            <div class="label">Free to start reading</div>
+        </div>
+        <div class="value-item">
+            <div class="number">Beginner &rarr; Advanced</div>
+            <div class="label">Stories for every level</div>
+        </div>
+        <div class="value-item">
+            <div class="number">5 min/day</div>
+            <div class="label">Is all it takes</div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="comparison">
+    <h2>Not another Duolingo clone</h2>
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="highlight"><img src="app_icon.png" alt="Learnables" class="comparison-icon"> Learnables</th>
+                <th><img src="duolingo_icon.png" alt="Duolingo" class="comparison-icon"> Duolingo</th>
+                <th>Textbooks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Method</td>
+                <td class="col-highlight">Stories + context</td>
+                <td>Gamified drills</td>
+                <td>Grammar rules</td>
+            </tr>
+            <tr>
+                <td>Real content</td>
+                <td class="col-highlight yes">&#10003; Yes</td>
+                <td class="no">Isolated sentences</td>
+                <td class="no">Textbook dialogues</td>
+            </tr>
+            <tr>
+                <td>Audio narration</td>
+                <td class="col-highlight yes">&#10003; Full story narration</td>
+                <td>Short sentences only</td>
+                <td>Sometimes</td>
+            </tr>
+            <tr>
+                <td>Time needed</td>
+                <td class="col-highlight">5 min/day</td>
+                <td>15-20 min/day</td>
+                <td>30+ min/day</td>
+            </tr>
+            <tr>
+                <td>Free tier</td>
+                <td class="col-highlight yes">&#10003; All stories, no ads</td>
+                <td>Ad-supported</td>
+                <td class="no">&#10007; No</td>
+            </tr>
+            <tr>
+                <td>European Portuguese</td>
+                <td class="col-highlight yes">&#10003; Yes</td>
+                <td class="no">&#10007; No</td>
+                <td>Varies</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+    <div class="how-header">
+        <h2>Start reading in 30 seconds</h2>
+    </div>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Pick a story</h3>
+            <p>Browse by language and level</p>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Tap, read, listen</h3>
+            <p>Tap any word to translate it. Press play for native audio.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Words just stick</h3>
+            <p>No flashcards. You learn from stories, the way your brain was built to.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SOCIAL PROOF / TESTIMONIALS -->
+<section class="social-proof">
+    <h2>What readers are saying</h2>
+    <div class="testimonials">
+        <!-- PLACEHOLDER: Replace these with real testimonials from beta testers or early users -->
+        <!-- Even 1-2 real quotes make a huge difference. Ask early users for a sentence. -->
+        <div class="testimonial">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote>"I finally feel like I'm actually learning Portuguese, not just memorizing random words."</blockquote>
+            <cite>Marieke V.</cite>
+        </div>
+        <div class="testimonial">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote>"The tap-to-translate is so natural. I read a whole story without opening Google Translate once."</blockquote>
+            <cite>Tomasz R.</cite>
+        </div>
+        <div class="testimonial">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote>"European Portuguese! Finally. I live in Lisbon and every other app only teaches Brazilian."</blockquote>
+            <cite>Sienna K.</cite>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+    <h2>Common questions</h2>
+    <div class="faq-item">
+        <div class="faq-q">Is this really free?</div>
+        <div class="faq-a">Yes. Every story in the library is free to start reading. 3 pages a day, any story, any level, forever. No trial that expires, no credit card, no ads. Premium just removes the daily page limit so you can read as much as you want.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">What languages are available?</div>
+        <div class="faq-a">Currently Portuguese and Spanish, with more languages coming soon. We're one of the very few apps that teaches European Portuguese.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">I'm a complete beginner. Will I understand anything?</div>
+        <div class="faq-a">Absolutely. Our easiest stories use simple sentences with full translations for every word and sentence. Tap anything you don't know. You'll be surprised how much you pick up just from reading.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">How is this different from Duolingo?</div>
+        <div class="faq-a">Duolingo uses gamified drills and repetition. Learnables uses stories. You read real content with native audio and pick up vocabulary naturally through context. It's based on comprehensible input, the same method polyglots swear by.</div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2>Pick a story. Start reading. It's free.</h2>
+    <p>Every story in the library is yours to explore. No account, no credit card, no catch.</p>
+    <div class="store-buttons" id="cta-store-buttons">
+        <a href="https://apps.apple.com/us/app/learnables-bilingual-stories/id6756303366" class="store-btn store-btn-ios" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="store-label">
+                <small>Download on the</small>
+                App Store
+            </div>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.learnables.learnables" class="store-btn store-btn-android" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.396 13l2.302-2.492zM5.864 2.658L16.8 9.99l-2.302 2.302L5.864 2.658z"/></svg>
+            <div class="store-label">
+                <small>Get it on</small>
+                Google Play
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta" id="sticky-cta">
+    <a href="#" id="sticky-cta-link">Download Free</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-left">&copy; 2026 Learnables. All rights reserved.</div>
+    <div class="footer-links">
+        <a href="blog/">Blog</a>
+        <a href="support.html">Support</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+        <a href="mailto:support@learnables.co">Contact</a>
+    </div>
+</footer>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+        this.parentElement.classList.toggle('open');
+    });
+});
+
+// Device-aware CTAs
+(function() {
+    var ua = navigator.userAgent || '';
+    var isIOS = /iPhone|iPad|iPod/i.test(ua);
+    var isAndroid = /Android/i.test(ua);
+    var isMobile = isIOS || isAndroid;
+
+    var iosLink = 'https://apps.apple.com/us/app/learnables-bilingual-stories/id6756303366';
+    var androidLink = 'https://play.google.com/store/apps/details?id=com.learnables.learnables';
+
+    // Sticky CTA link - point to correct store
+    var stickyLink = document.getElementById('sticky-cta-link');
+    if (isIOS) {
+        stickyLink.href = iosLink;
+    } else if (isAndroid) {
+        stickyLink.href = androidLink;
+    } else {
+        stickyLink.href = iosLink; // default
+    }
+
+    // On mobile, emphasize the right button (make the other one less prominent)
+    if (isIOS) {
+        document.querySelectorAll('.store-btn-android').forEach(function(btn) {
+            btn.style.opacity = '0.6';
+            btn.style.order = '2';
+        });
+    } else if (isAndroid) {
+        document.querySelectorAll('.store-btn-ios').forEach(function(btn) {
+            btn.style.opacity = '0.6';
+            btn.style.order = '2';
+        });
+    }
+
+
+    // Hide sticky CTA when near the bottom CTA section
+    if (isMobile) {
+        var stickyCta = document.getElementById('sticky-cta');
+        var ctaSection = document.querySelector('.cta');
+        window.addEventListener('scroll', function() {
+            if (!ctaSection) return;
+            var rect = ctaSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+                stickyCta.style.display = 'none';
+            } else {
+                stickyCta.style.display = 'block';
+            }
+        });
+    }
+})();
+
+// ===== INTERACTIVE DEMO (scalable - add languages by adding to LANGUAGES config) =====
+(function() {
+    // ---- LANGUAGE CONFIG ----
+    // To add a new language: add an entry here with story data, timings, and audio URL.
+    // Everything else (tabs, rendering, audio sync) is automatic.
+    var LANGUAGES = {
+        PT: {
+            label: "Portuguese",
+
+            title: "A Ilha Silenciosa",
+            badge: "Beginner \u00b7 Portuguese",
+            audioUrl: "https://assets.learnables.co/books/the-silent-island/PT/audio/page_1/page_1.mp3",
+            sentenceTimings: [[0.0,2.624],[3.228,6.304],[6.908,10.577],[11.088,15.116],[15.72,18.355],[19.168,22.129],[22.825,25.217],[25.914,28.874],[29.687,33.193],[33.797,36.316]],
+            wordTimings: [[0.0,0.104],[0.221,0.697],[0.813,0.871],[0.894,1.44],[1.474,1.637],[1.66,1.997],[2.02,2.624],[3.228,3.553],[3.587,3.669],[3.715,4.18],[4.261,4.435],[4.458,4.841],[4.865,5.004],[5.062,5.375],[5.41,5.492],[5.526,6.304],[6.908,6.978],[7.059,7.593],[7.651,7.895],[7.976,8.255],[8.313,8.591],[8.626,8.754],[8.789,9.404],[9.485,9.555],[9.601,10.577],[11.088,11.308],[11.378,11.807],[11.877,12.063],[12.086,12.446],[12.469,12.492],[12.539,12.934],[12.957,13.189],[13.224,13.781],[13.862,13.978],[14.036,14.396],[14.454,14.594],[14.64,15.116],[15.72,16.277],[16.3,16.358],[16.382,16.509],[16.556,17.078],[17.136,17.461],[17.508,17.636],[17.67,17.833],[17.879,18.355],[19.168,19.226],[19.296,19.563],[19.609,19.679],[19.714,20.248],[20.341,20.643],[20.666,20.782],[20.828,20.991],[21.037,21.084],[21.119,21.478],[21.537,22.129],[22.825,23.046],[23.081,23.336],[23.359,23.441],[23.522,23.893],[24.044,24.358],[24.404,24.509],[24.567,25.217],[25.914,26.053],[26.076,26.297],[26.366,26.738],[26.761,26.784],[26.831,27.632],[27.876,27.957],[28.015,28.154],[28.177,28.27],[28.294,28.398],[28.421,28.874],[29.687,29.826],[29.872,30.232],[30.279,30.337],[30.43,30.755],[30.836,31.01],[31.057,31.196],[31.219,31.242],[31.277,31.962],[32.032,32.113],[32.171,32.357],[32.38,32.508],[32.531,33.193],[33.797,34.145],[34.203,34.261],[34.284,34.47],[34.505,34.551],[34.586,34.807],[34.842,34.911],[34.946,35.329],[35.364,35.48],[35.538,35.585],[35.631,36.316]],
+            sentences: [
+                {words:[{t:"O",tr:"The"},{t:"Thomas",tr:"Thomas"},{t:"\u00e9",tr:"is"},{t:"arquiteto",tr:"architect"},{t:"numa",tr:"in a"},{t:"cidade",tr:"city"},{t:"grande.",tr:"big."}],translation:"Thomas is an architect in a big city."},
+                {words:[{t:"Todos",tr:"Every"},{t:"os",tr:"the"},{t:"dias,",tr:"days,"},{t:"ele",tr:"he"},{t:"trabalha",tr:"works"},{t:"at\u00e9",tr:"until"},{t:"tarde",tr:"late"},{t:"no",tr:"at the"},{t:"escrit\u00f3rio.",tr:"office."}],translation:"Every day, he works late at his office."},
+                {words:[{t:"O",tr:"The"},{t:"telem\u00f3vel",tr:"phone"},{t:"dele",tr:"his"},{t:"toca",tr:"rings"},{t:"sempre",tr:"all the time"},{t:"com",tr:"with"},{t:"chamadas",tr:"calls"},{t:"e",tr:"and"},{t:"mensagens.",tr:"messages."}],translation:"His phone rings all the time with calls and messages."},
+                {words:[{t:"Aos",tr:"Little by"},{t:"poucos,",tr:"little,"},{t:"ele",tr:"he"},{t:"come\u00e7a",tr:"starts"},{t:"a",tr:"to"},{t:"sentir-se",tr:"feel"},{t:"muito",tr:"very"},{t:"cansado",tr:"tired"},{t:"e",tr:"and"},{t:"vazio",tr:"empty"},{t:"por",tr:"on the"},{t:"dentro.",tr:"inside."}],translation:"Slowly, he starts to feel very tired and empty inside."},
+                {words:[{t:"\"Preciso",tr:"\"I need"},{t:"de",tr:"of"},{t:"uma",tr:"a"},{t:"pausa\",",tr:"break,\""},{t:"pensa",tr:"thinks"},{t:"ele",tr:"he"},{t:"numa",tr:"on a"},{t:"noite.",tr:"evening."}],translation:"\"I need a break,\" he thinks one evening."},
+                {words:[{t:"O",tr:"The"},{t:"barulho",tr:"noise"},{t:"da",tr:"of the"},{t:"cidade",tr:"city"},{t:"d\u00e1-lhe",tr:"gives him"},{t:"uma",tr:"a"},{t:"dor",tr:"pain"},{t:"de",tr:"of"},{t:"cabe\u00e7a",tr:"head"},{t:"forte.",tr:"strong."}],translation:"The noise of the city gives him a bad headache."},
+                {words:[{t:"Quando",tr:"When"},{t:"fecha",tr:"closes"},{t:"os",tr:"the"},{t:"olhos,",tr:"eyes,"},{t:"pensa",tr:"thinks"},{t:"no",tr:"about the"},{t:"oceano.",tr:"ocean."}],translation:"When he closes his eyes, he thinks about the ocean."},
+                {words:[{t:"Um",tr:"A"},{t:"lugar",tr:"place"},{t:"calmo",tr:"quiet"},{t:"e",tr:"and"},{t:"tranquilo,",tr:"peaceful,"},{t:"\u00e9",tr:"is"},{t:"isso",tr:"that"},{t:"que",tr:"what"},{t:"ele",tr:"he"},{t:"quer.",tr:"wants."}],translation:"A quiet and peaceful place \u2014 that is what he wants."},
+                {words:[{t:"Um",tr:"One"},{t:"dia,",tr:"day,"},{t:"o",tr:"the"},{t:"Thomas",tr:"Thomas"},{t:"olha",tr:"looks"},{t:"para",tr:"at"},{t:"o",tr:"the"},{t:"calend\u00e1rio",tr:"calendar"},{t:"e",tr:"and"},{t:"toma",tr:"makes"},{t:"uma",tr:"a"},{t:"decis\u00e3o.",tr:"decision."}],translation:"One day, Thomas looks at his calendar and makes a decision."},
+                {words:[{t:"Est\u00e1",tr:"It is"},{t:"na",tr:"in the"},{t:"hora",tr:"time"},{t:"de",tr:"to"},{t:"sair",tr:"leave"},{t:"da",tr:"the"},{t:"cidade",tr:"city"},{t:"por",tr:"for"},{t:"um",tr:"a"},{t:"tempo.",tr:"while."}],translation:"It is time to leave the city for a while."}
+            ]
+        },
+        ES: {
+            label: "Spanish",
+
+            title: "La Isla Silenciosa",
+            badge: "Beginner \u00b7 Spanish",
+            audioUrl: "https://assets.learnables.co/books/the-silent-island/ES/audio/page_1/page_1.mp3",
+            sentenceTimings: [[0.0,2.844],[3.286,6.269],[6.966,10.472],[10.797,15.186],[15.697,18.436],[18.819,21.78],[22.291,24.88],[25.321,28.084],[28.688,32.298],[32.809,35.34]],
+            wordTimings: [[0.0,0.58],[0.697,0.859],[0.929,1.463],[1.486,1.533],[1.591,1.718],[1.753,2.136],[2.183,2.844],[3.286,3.599],[3.669,3.82],[3.878,4.226],[4.249,4.656],[4.679,4.899],[4.969,5.271],[5.306,5.352],[5.41,5.457],[5.492,6.269],[6.966,7.129],[7.198,7.57],[7.686,7.999],[8.057,8.266],[8.29,8.336],[8.406,8.707],[8.754,8.882],[8.905,9.416],[9.474,9.509],[9.567,10.472],[10.797,11.111],[11.146,11.18],[11.227,11.749],[11.877,12.376],[12.411,12.434],[12.492,13.038],[13.096,13.305],[13.351,13.897],[13.932,13.955],[14.002,14.385],[14.431,14.559],[14.629,15.186],[15.697,16.382],[16.416,16.474],[16.532,17.252],[17.31,17.67],[17.716,17.844],[17.902,18.436],[18.819,18.982],[19.051,19.272],[19.318,19.377],[19.423,19.493],[19.527,19.887],[19.945,20.027],[20.073,20.131],[20.178,20.224],[20.305,20.677],[20.735,21.014],[21.072,21.13],[21.176,21.78],[22.291,22.558],[22.593,22.825],[22.883,23.022],[23.115,23.556],[23.626,23.997],[24.044,24.102],[24.148,24.218],[24.276,24.88],[25.321,25.449],[25.495,25.727],[25.774,26.203],[26.273,26.296],[26.343,26.389],[26.447,26.877],[26.993,27.236],[27.26,27.306],[27.364,27.434],[27.48,27.562],[27.608,28.084],[28.688,28.862],[28.92,29.35],[29.5,29.837],[29.918,30.127],[30.151,30.209],[30.278,30.917],[30.975,31.021],[31.114,31.37],[31.451,31.59],[31.637,32.298],[32.809,33.018],[33.065,33.239],[33.285,33.355],[33.401,33.703],[33.75,33.808],[33.866,33.935],[33.97,34.295],[34.365,34.493],[34.551,34.597],[34.655,35.34]],
+            sentences: [
+                {words:[{t:"Thomas",tr:"Thomas"},{t:"es",tr:"is"},{t:"arquitecto",tr:"architect"},{t:"en",tr:"in"},{t:"una",tr:"a"},{t:"ciudad",tr:"city"},{t:"grande.",tr:"big."}],translation:"Thomas is an architect in a big city."},
+                {words:[{t:"Todos",tr:"Every"},{t:"los",tr:"the"},{t:"d\u00edas,",tr:"days,"},{t:"trabaja",tr:"works"},{t:"hasta",tr:"until"},{t:"tarde",tr:"late"},{t:"en",tr:"in"},{t:"la",tr:"the"},{t:"oficina.",tr:"office."}],translation:"Every day, he works late at his office."},
+                {words:[{t:"Su",tr:"His"},{t:"m\u00f3vil",tr:"phone"},{t:"suena",tr:"rings"},{t:"todo",tr:"all"},{t:"el",tr:"the"},{t:"tiempo",tr:"time"},{t:"con",tr:"with"},{t:"llamadas",tr:"calls"},{t:"y",tr:"and"},{t:"mensajes.",tr:"messages."}],translation:"His phone rings all the time with calls and messages."},
+                {words:[{t:"Poco",tr:"Little"},{t:"a",tr:"by"},{t:"poco,",tr:"little,"},{t:"empieza",tr:"starts"},{t:"a",tr:"to"},{t:"sentirse",tr:"feel"},{t:"muy",tr:"very"},{t:"cansado",tr:"tired"},{t:"y",tr:"and"},{t:"vac\u00edo",tr:"empty"},{t:"por",tr:"on the"},{t:"dentro.",tr:"inside."}],translation:"Slowly, he starts to feel very tired and empty inside."},
+                {words:[{t:"\"Necesito",tr:"\"I need"},{t:"un",tr:"a"},{t:"descanso\",",tr:"break,\""},{t:"piensa",tr:"thinks"},{t:"una",tr:"one"},{t:"noche.",tr:"evening."}],translation:"\"I need a break,\" he thinks one evening."},
+                {words:[{t:"El",tr:"The"},{t:"ruido",tr:"noise"},{t:"de",tr:"of"},{t:"la",tr:"the"},{t:"ciudad",tr:"city"},{t:"le",tr:"him"},{t:"da",tr:"gives"},{t:"un",tr:"a"},{t:"fuerte",tr:"strong"},{t:"dolor",tr:"pain"},{t:"de",tr:"of"},{t:"cabeza.",tr:"head."}],translation:"The noise of the city gives him a bad headache."},
+                {words:[{t:"Cuando",tr:"When"},{t:"cierra",tr:"closes"},{t:"los",tr:"the"},{t:"ojos,",tr:"eyes,"},{t:"piensa",tr:"thinks"},{t:"en",tr:"about"},{t:"el",tr:"the"},{t:"oc\u00e9ano.",tr:"ocean."}],translation:"When he closes his eyes, he thinks about the ocean."},
+                {words:[{t:"Un",tr:"A"},{t:"lugar",tr:"place"},{t:"tranquilo",tr:"quiet"},{t:"y",tr:"and"},{t:"en",tr:"in"},{t:"paz,",tr:"peace,"},{t:"eso",tr:"that"},{t:"es",tr:"is"},{t:"lo",tr:"the"},{t:"que",tr:"what"},{t:"quiere.",tr:"wants."}],translation:"A quiet and peaceful place \u2014 that is what he wants."},
+                {words:[{t:"Un",tr:"One"},{t:"d\u00eda,",tr:"day,"},{t:"Thomas",tr:"Thomas"},{t:"mira",tr:"looks at"},{t:"el",tr:"the"},{t:"calendario",tr:"calendar"},{t:"y",tr:"and"},{t:"toma",tr:"makes"},{t:"una",tr:"a"},{t:"decisi\u00f3n.",tr:"decision."}],translation:"One day, Thomas looks at his calendar and makes a decision."},
+                {words:[{t:"Es",tr:"It is"},{t:"hora",tr:"time"},{t:"de",tr:"to"},{t:"salir",tr:"leave"},{t:"de",tr:"the"},{t:"la",tr:"the"},{t:"ciudad",tr:"city"},{t:"por",tr:"for"},{t:"un",tr:"a"},{t:"tiempo.",tr:"while."}],translation:"It is time to leave the city for a while."}
+            ]
+        }
+        // To add a new language, copy one of the above blocks and update:
+        // label, title, badge, audioUrl, sentenceTimings, wordTimings, sentences
+    };
+
+    // ---- STATE ----
+    var container = document.getElementById('demo-sentences');
+    var tabsContainer = document.getElementById('demo-lang-tabs');
+    if (!container || !tabsContainer) return;
+
+    var currentLang = null;
+    var allWordEls = [];
+    var activeTooltip = null;
+    var audio = new Audio();
+    audio.preload = 'none';
+    var isPlaying = false;
+    var highlightRAF = null;
+    var lastHW = -1, lastHS = -1;
+
+    var playBtn = document.getElementById('demo-play-btn');
+    var playIcon = document.getElementById('play-icon');
+    var pauseIcon = document.getElementById('pause-icon');
+    var progressBar = document.getElementById('demo-progress-bar');
+    var timeEl = document.getElementById('demo-time');
+    var progressWrap = document.querySelector('.demo-progress');
+    var titleEl = document.getElementById('demo-title');
+    var badgeEl = document.getElementById('demo-badge');
+
+    // ---- BUILD LANGUAGE TABS ----
+    var langKeys = Object.keys(LANGUAGES);
+    langKeys.forEach(function(key) {
+        var lang = LANGUAGES[key];
+        var tab = document.createElement('button');
+        tab.className = 'demo-lang-tab';
+        tab.textContent = lang.label;
+        tab.dataset.lang = key;
+        tab.addEventListener('click', function() { switchLanguage(key); });
+        tabsContainer.appendChild(tab);
+    });
+
+    // ---- SWITCH LANGUAGE ----
+    function switchLanguage(langKey) {
+        if (currentLang === langKey) return;
+        currentLang = langKey;
+        var lang = LANGUAGES[langKey];
+
+        // Stop audio
+        audio.pause();
+        audio.currentTime = 0;
+        resetPlayState();
+
+        // Update tabs
+        tabsContainer.querySelectorAll('.demo-lang-tab').forEach(function(t) {
+            t.classList.toggle('active', t.dataset.lang === langKey);
+        });
+
+        // Update meta
+        titleEl.textContent = lang.title;
+        badgeEl.textContent = lang.badge;
+
+        // Update audio source
+        audio.src = lang.audioUrl;
+
+        // Rebuild sentences
+        container.innerHTML = '';
+        allWordEls = [];
+        var gi = 0;
+
+        lang.sentences.forEach(function(sent) {
+            var div = document.createElement('div');
+            div.className = 'demo-sentence';
+
+            var wordsDiv = document.createElement('div');
+            wordsDiv.className = 'demo-words';
+
+            sent.words.forEach(function(w, wi) {
+                var span = document.createElement('span');
+                span.className = 'demo-word';
+                span.textContent = w.t;
+                span.dataset.gi = gi;
+                allWordEls.push(span);
+                gi++;
+
+                (function(wordIndex) {
+                    span.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        showTooltip(span, w.tr);
+                        playWord(wordIndex);
+                    });
+                })(gi - 1);
+
+                wordsDiv.appendChild(span);
+                if (wi < sent.words.length - 1) wordsDiv.appendChild(document.createTextNode(' '));
+            });
+
+            var transDiv = document.createElement('div');
+            transDiv.className = 'demo-translation';
+            transDiv.textContent = sent.translation;
+
+            div.appendChild(wordsDiv);
+            div.appendChild(transDiv);
+            div.addEventListener('click', function() { div.classList.toggle('show-translation'); });
+            container.appendChild(div);
+        });
+
+        // Show tap nudge on touch devices
+        showTapNudge();
+    }
+
+    // ---- TAP NUDGE (mobile only) ----
+    function showTapNudge() {
+        // Only on touch devices
+        if (window.matchMedia('(hover: hover)').matches) return;
+        // Remove any existing nudge
+        var old = container.parentElement.querySelector('.demo-tap-nudge');
+        if (old) old.remove();
+        // Insert nudge above sentences
+        var nudge = document.createElement('div');
+        nudge.className = 'demo-tap-nudge';
+        nudge.textContent = '\u261d Tap any underlined word to translate it';
+        container.parentElement.insertBefore(nudge, container);
+        // Dismiss on first word tap
+        var dismiss = function() {
+            if (nudge.parentNode) nudge.parentNode.removeChild(nudge);
+            container.removeEventListener('click', dismiss);
+        };
+        container.addEventListener('click', dismiss);
+        // Auto-dismiss after 5s
+        setTimeout(dismiss, 5000);
+    }
+
+    // ---- SINGLE WORD AUDIO ----
+    var wordAudio = new Audio();
+    var wordStopTimer = null;
+    function playWord(gi) {
+        var lang = LANGUAGES[currentLang];
+        var wt = lang.wordTimings;
+        if (gi < 0 || gi >= wt.length) return;
+        var start = wt[gi][0];
+        var end = wt[gi][1] + 0.05;
+        // If full audio is playing, pause it first
+        if (isPlaying) { audio.pause(); }
+        wordAudio.src = lang.audioUrl;
+        wordAudio.currentTime = start;
+        wordAudio.play();
+        if (wordStopTimer) clearTimeout(wordStopTimer);
+        wordStopTimer = setTimeout(function() {
+            wordAudio.pause();
+        }, (end - start) * 1000);
+    }
+
+    // ---- TOOLTIP ----
+    function showTooltip(el, text) {
+        hideTooltip();
+        var tip = document.createElement('div');
+        tip.className = 'demo-word-tooltip';
+        tip.textContent = text;
+        el.appendChild(tip);
+        // If tooltip is clipped at top, flip it below the word
+        var tipRect = tip.getBoundingClientRect();
+        if (tipRect.top < 0 || tipRect.top < container.getBoundingClientRect().top) {
+            tip.classList.add('tooltip-below');
+        }
+        activeTooltip = { el: el, tip: tip };
+        setTimeout(hideTooltip, 2000);
+    }
+    function hideTooltip() {
+        if (activeTooltip && activeTooltip.tip.parentNode) activeTooltip.tip.parentNode.removeChild(activeTooltip.tip);
+        activeTooltip = null;
+    }
+
+    // ---- AUDIO CONTROLS ----
+    function resetPlayState() {
+        isPlaying = false;
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        if (highlightRAF) cancelAnimationFrame(highlightRAF);
+        allWordEls.forEach(function(el) { el.classList.remove('highlighted'); });
+        container.querySelectorAll('.demo-sentence').forEach(function(s) { s.classList.remove('active'); });
+        progressBar.style.width = '0%';
+        timeEl.textContent = '0:00';
+        lastHW = -1; lastHS = -1;
+    }
+
+    playBtn.addEventListener('click', function() { isPlaying ? audio.pause() : audio.play(); });
+
+    audio.addEventListener('play', function() {
+        isPlaying = true; playIcon.style.display = 'none'; pauseIcon.style.display = 'block';
+        highlightRAF = requestAnimationFrame(tick);
+    });
+    audio.addEventListener('pause', function() {
+        isPlaying = false; playIcon.style.display = 'block'; pauseIcon.style.display = 'none';
+        if (highlightRAF) cancelAnimationFrame(highlightRAF);
+    });
+    audio.addEventListener('ended', function() { resetPlayState(); });
+    audio.addEventListener('timeupdate', function() {
+        if (audio.duration) {
+            progressBar.style.width = (audio.currentTime / audio.duration * 100) + '%';
+            var s = Math.floor(audio.currentTime);
+            timeEl.textContent = Math.floor(s/60) + ':' + (s%60<10?'0':'') + (s%60);
+        }
+    });
+    progressWrap.addEventListener('click', function(e) {
+        if (audio.duration) { audio.currentTime = ((e.clientX - progressWrap.getBoundingClientRect().left) / progressWrap.offsetWidth) * audio.duration; }
+    });
+
+    // ---- WORD HIGHLIGHTING ----
+    function tick() {
+        var lang = LANGUAGES[currentLang];
+        var wt = lang.wordTimings;
+        var st = lang.sentenceTimings;
+        var t = audio.currentTime + 0.12;
+
+        // Find the word whose timing window contains t, or the last word that started before t
+        var found = -1;
+        for (var i = 0; i < wt.length; i++) {
+            if (t >= wt[i][0]) {
+                // Check if we're within this word's window (with generous padding to next word)
+                var end = (i + 1 < wt.length) ? wt[i + 1][0] : wt[i][1] + 0.3;
+                if (t < end) { found = i; break; }
+            }
+        }
+        if (found !== lastHW) {
+            if (lastHW >= 0 && allWordEls[lastHW]) allWordEls[lastHW].classList.remove('highlighted');
+            if (found >= 0 && allWordEls[found]) allWordEls[found].classList.add('highlighted');
+            lastHW = found;
+        }
+        var si = -1;
+        for (var j = 0; j < st.length; j++) {
+            if (t >= st[j][0] && t <= st[j][1] + 0.3) { si = j; break; }
+        }
+        if (si !== lastHS) {
+            var sents = container.querySelectorAll('.demo-sentence');
+            sents.forEach(function(s) { s.classList.remove('active'); });
+            if (si >= 0 && sents[si]) { sents[si].classList.add('active'); sents[si].scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+            lastHS = si;
+        }
+        highlightRAF = requestAnimationFrame(tick);
+    }
+
+    document.addEventListener('click', function(e) { if (activeTooltip && !e.target.closest('.demo-word')) hideTooltip(); });
+
+    // ---- INIT: default to first language ----
+    switchLanguage(langKeys[0]);
+})();
+</script>
+
 </body>
 </html>
